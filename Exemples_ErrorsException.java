@@ -6,9 +6,11 @@ import java.net.SocketException;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.EOFException;
+import java.io.IOException;
 
 public class Exemples_ErrorsExceptions {
     public static void main(String[] args) {
@@ -73,8 +75,6 @@ public class Exemples_ErrorsExceptions {
             }
         } catch (OutOfMemoryError e) {
             System.out.println("S'ha produït un error d'excés de memòria (OutOfMemoryError)");
-        }finally {
-            System.out.println("finally");
         }
 
     }
@@ -83,10 +83,6 @@ public class Exemples_ErrorsExceptions {
             cridaRecursiva(0);
         } catch (StackOverflowError e) {
             System.out.println("S'ha produït un error de desbordament de la pila (StackOverflowError)");
-            e.printStackTrace();
-        }finally {
-
-            System.out.println("finally");
         }
     }
     public static void cridaRecursiva(int i) {
@@ -101,8 +97,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("index element: " + index);
         } catch (IllegalArgumentException e) {
             System.out.println("S'ha produït un error d'argument no vàlid (IllegalArgumentException): " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
 
@@ -122,9 +116,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("Resultat: " + result);
         } catch (IllegalArgumentException e) {
             System.out.println("S'ha produït un error d'argument no vàlid (IllegalArgumentException): " + e.getMessage());
-
-        }finally {
-            System.out.println("finally");
         }
     }
 
@@ -141,8 +132,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("Resultat de la divisió: " + resultat);
         } catch (ArithmeticException e) {
             System.out.println("S'ha produït un error d'aritmètica (ArithmeticException): " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
 
@@ -160,8 +149,6 @@ public class Exemples_ErrorsExceptions {
             int element = array[6]; // Intentem accedir a un índex fora dels límits de l'array
         } catch (IndexOutOfBoundsException e) {
             System.out.println("S'ha produït un error d'índex fora de límits (IndexOutOfBoundsException): " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
     static void nullPointerException(){
@@ -171,8 +158,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("Longitud del text: " + length);
         } catch (NullPointerException e) {
             System.out.println("S'ha produït un error de punter nul (NullPointerException): " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
 
@@ -183,8 +168,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("S'ha produït un error de connexió de xarxa (SocketException): " + e1.getMessage());
         } catch (IOException e2) {
             System.out.println("S'ha produït un error d'entrada/sortida (IOException): " + e2.getMessage());
-        }finally {
-            System.out.println("finally");
         }
         //podriem fer només un catch amb una sola variable e >>> catch (SocketException | IOException e)
     }
@@ -199,8 +182,6 @@ public class Exemples_ErrorsExceptions {
             llegirSolucioExamen("solucio_examen_uf5.txt"); // Intentem llegir un fitxer que no existeix
         } catch (FileNotFoundException e) {
             System.out.println("No s'ha trobat el fitxer: " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
     public static void llegirSolucioExamen(String nomFitxer) throws FileNotFoundException {
@@ -222,8 +203,6 @@ public class Exemples_ErrorsExceptions {
             System.out.println("S'ha arribat al final del fitxer: " + e1.getMessage());
         } catch (IOException e2) {
             System.out.println("S'ha produït un error d'entrada/sortida: " + e2.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
 }
