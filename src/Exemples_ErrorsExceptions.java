@@ -73,8 +73,10 @@ public class Exemples_ErrorsExceptions {
             }
         } catch (OutOfMemoryError e) {
             System.out.println("S'ha produït un error d'excés de memòria (OutOfMemoryError)");
+            // Dirà la línia i el mètode que dona error
+            e.printStackTrace();
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
 
     }
@@ -83,10 +85,9 @@ public class Exemples_ErrorsExceptions {
             cridaRecursiva(0);
         } catch (StackOverflowError e) {
             System.out.println("S'ha produït un error de desbordament de la pila (StackOverflowError)");
-            e.printStackTrace();
         }finally {
 
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
     public static void cridaRecursiva(int i) {
@@ -102,7 +103,7 @@ public class Exemples_ErrorsExceptions {
         } catch (IllegalArgumentException e) {
             System.out.println("S'ha produït un error d'argument no vàlid (IllegalArgumentException): " + e.getMessage());
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
 
@@ -124,7 +125,7 @@ public class Exemples_ErrorsExceptions {
             System.out.println("S'ha produït un error d'argument no vàlid (IllegalArgumentException): " + e.getMessage());
 
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
 
@@ -140,9 +141,9 @@ public class Exemples_ErrorsExceptions {
             int resultat = dividir(10, 0); // Intentem dividir 10 per zero
             System.out.println("Resultat de la divisió: " + resultat);
         } catch (ArithmeticException e) {
-            System.out.println("S'ha produït un error d'aritmètica (ArithmeticException): " + e.getMessage());
+            System.out.println("S'ha produït un error d'aritmètica (ArithmeticException): " + e);
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
 
@@ -159,9 +160,10 @@ public class Exemples_ErrorsExceptions {
             System.out.println("accedim a la posicio 6 de l'array!!!");
             int element = array[6]; // Intentem accedir a un índex fora dels límits de l'array
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("S'ha produït un error d'índex fora de límits (IndexOutOfBoundsException): " + e.getMessage());
+            // Transforma l'idioma, data, temps dependent de la regio del missatge
+            System.out.println("S'ha produït un error d'índex fora de límits (IndexOutOfBoundsException): " + e.getLocalizedMessage());
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
     static void nullPointerException(){
@@ -170,9 +172,10 @@ public class Exemples_ErrorsExceptions {
             int length = text.length(); // Intentem obtenir la longitud d'una cadena nul·la
             System.out.println("Longitud del text: " + length);
         } catch (NullPointerException e) {
-            System.out.println("S'ha produït un error de punter nul (NullPointerException): " + e.getMessage());
+            // Mostra la causa principal d'un error
+            System.out.println("S'ha produït un error de punter nul (NullPointerException): " + e.getCause());
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
 
@@ -184,7 +187,7 @@ public class Exemples_ErrorsExceptions {
         } catch (IOException e2) {
             System.out.println("S'ha produït un error d'entrada/sortida (IOException): " + e2.getMessage());
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
         //podriem fer només un catch amb una sola variable e >>> catch (SocketException | IOException e)
     }
@@ -199,8 +202,6 @@ public class Exemples_ErrorsExceptions {
             llegirSolucioExamen("solucio_examen_uf5.txt"); // Intentem llegir un fitxer que no existeix
         } catch (FileNotFoundException e) {
             System.out.println("No s'ha trobat el fitxer: " + e.getMessage());
-        }finally {
-            System.out.println("finally");
         }
     }
     public static void llegirSolucioExamen(String nomFitxer) throws FileNotFoundException {
@@ -223,7 +224,7 @@ public class Exemples_ErrorsExceptions {
         } catch (IOException e2) {
             System.out.println("S'ha produït un error d'entrada/sortida: " + e2.getMessage());
         }finally {
-            System.out.println("finally");
+            System.out.println("Mètode tancat");
         }
     }
 }
